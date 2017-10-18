@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+	<title>轮播图</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			text-decoration: none;
+		}
+		#container{
+			width: 600px;
+			height: 400px;
+			overflow: hidden;
+			border:1px solid red;
+			position: relative;
+		}
+		#list{
+			width:4200px;
+			height: 400px;
+			z-index: 1;
+			position: absolute;
+		}
+		#list img{
+			float: left;
+
+		}
+		#buttons{
+			position: absolute;
+			bottom: 20px;
+			left: 250px;
+			z-index: 2;
+		}
+		#buttons span{
+			height: 10px;
+			width: 10px;
+			border:1px solid yellow;
+			border-radius: 50%;
+			display: inline-block;
+			margin-right: 5px;
+			cursor: pointer;
+			float: left;
+		}
+		#buttons span.on{
+			background: orange;
+		}
+		a.arrow{
+			z-index: 2;
+			position: absolute;
+			top:180px;	
+			display: none;
+			width:40px;
+			font-size:36px;
+			font-weight:bold;
+			line-height:39px;
+			text-align:center;
+			color:#fff;
+			background-color:rgba(0,0,0, .3);
+			cursor:pointer;
+		}
+		a.arrow:hover {
+			background-color: rgba(0,0,0, .7);
+		}
+		#prev{
+			left:20px;
+		}
+		#next{
+			right: 20px;
+		}
+		#container:hover .arrow{
+			display:block;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function (){
+			var container=document.getElementById('container');
+			var list = document.getElementById('list');
+			var buttons=document.getElementById('buttons').getElementsByTagName('span');
+			var prev=document.getElementById('prev');
+			var next=document.getElementById('next');
+			var index=1;
+			var fengjings=false;
+			var timer;
+
+			console.log(container)
+            
+            function showbutton(){
+            	for(var i=0;i<buttons.length;i++){
+            		if(buttons[i].className=='on'){
+            			buttons[i].className='';
+            			break;
+            		}
+            		
+            	}
+            	buttons[index-1].className='on';
+            }
+			function fengjing (offset){
+				var fengjings=true;
+				var newLeft=parseInt(list.style.left)+offset;
+				var time=300;
+				var interval=10;
+				var speed=offset/(time/interval);
+
+				function go(){
+					if((speed<0 && parseInt(list.style.left)>newLeft )||(speed>0 && parseInt(list.style.left)<newLeft)){
+						list.style.left=parseInt(list.style.left)+speed+'px';
+						setTimeout(go,interval);
+					}
+					
+					else{
+						var fengjings=false;
+						list.style.left=newLeft+'px';
+						if(newLeft>-600){
+							list.style.left=-3000+'px';
+						}
+						if(newLeft<-3000){
+							list.style.left=-600+'px';
+						}
+					}
+				}
+				go();
+			}
+
+			function play(){
+				timer=setInterval(function(){
+					next.onclick();
+				},3000);
+			}
+
+			function stop(){
+				clearInterval(timer);
+			}
+
+			next.onclick=function(){
+				
+				if(index==5){
+				   index=1;
+			}
+			else{
+				index+=1;
+			}
+				
+				showbutton();
+
+				if(!fengjings){
+					fengjing(-600);
+				}
+			}
+			prev.onclick=function(){
+				
+				if(index==1){
+					index=5;
+				}
+				else{
+					index-=1;
+				}
+				
+				showbutton();
+				if(!fengjings){
+					fengjing(600);
+				}
+			}
+
+			for(var i=0;i<buttons.length;i++){
+				buttons[i].onclick=function(){
+					if(this.className=='on'){
+						return;
+					}
+					var myIndex=parseInt(this.getAttribute('index'));
+					var offset=-600*(myIndex-index);
+					fengjing(offset);
+					index=myIndex;
+					showbutton();
+				}
+			}
+			container.onmouseover=stop;
+			container.onmouseout=play;
+			play();
+		}
+	</script>
+</head>
+<body>
+	<div id="container">
+		<div id="list" style="left:-600px;">
+			<img src="image/5.jpg">
+			<img src="image/1.jpg">
+			<img src="image/2.jpg">
+			<img src="image/3.jpg">
+			<img src="image/4.jpg">
+			<img src="image/5.jpg">
+			<img src="image/1.jpg">
+		</div>
+		<div id="buttons">
+			<span index="1" class="on"></span>
+			<span index="2"></span>
+			<span index="3"></span>
+			<span index="4"></span>
+			<span index="5"></span>
+		</div>
+		<a href="javascript:;" id="prev" class="arrow">&lt;</a>
+		<a href="javascript:;" id="next" class="arrow">&gt;</a>
+	</div>
+	
+</body>
+</html>

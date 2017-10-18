@@ -1,0 +1,438 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" Content="text/html;charset=utf-8"/>
+		<script type="text/javascript">
+			function Wopen(){
+				window.open('http://www.baidu.com/','_blank')
+			}
+		</script>
+	</head>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		.header .main{
+			margin:0;
+			padding:0;
+		}
+
+		.header img{
+			width: 100%;
+			height: 334px;
+			display: block;
+		}
+
+		.header p.time{
+			width: 1000px;
+			height: 59px;
+			color: #834D00;
+			font-size: 20px;
+			text-align: center;
+			line-height: 62px;
+			background-color: #fff47d;
+			border-bottom-left-radius: 12px;
+			border-bottom-right-radius: 12px;
+			margin: 0px auto;
+			box-shadow:0px 3px #f2d118;	
+		}
+		.main{
+			margin-bottom: 30px;
+		}
+		.main ul.total{
+			margin: 0;
+			padding: 0;
+		}
+		.main li.paixu{
+			position:relative;
+		}
+		.main ul.total .public{
+			margin-bottom: 3px;
+		}
+		.main ul.total .public2{
+			margin-top: -3px;
+			margin-bottom: 3px;
+		}
+		.main ul.total .public p.lianjie,.main ul.total .public2 p.lianjie{
+			display: block;
+			margin: 0px;
+			padding:0;
+			height: 14px;
+		}
+
+		.main ul.total .public p.lianjie span.dai,
+		.main ul.total .public2 p.lianjie span.dai,
+		.main ul.total .public p.lianjie span.dai2,
+		.main ul.total .public2 p.lianjie span.dai2
+		{
+			width: 16px;
+			height: 14px;
+			background-color: #cfdae5;
+			display: inline-block;
+		}
+
+		.main ul.total .public p.lianjie span.dai,
+		.main ul.total .public2 p.lianjie span.dai
+		{
+			margin-left: 250px;
+		}
+
+		.main ul.total .public p.lianjie span.dai2,
+		.main ul.total .public2 p.lianjie span.dai2
+		{
+			margin-left: 800px;
+		}
+		
+		.main img.biaotilan{
+			margin-top: 30px;
+			display: block;
+			height: 46px;
+
+		}
+		.main ul.kong1{
+			margin-left: 100px;
+			margin-right: 100px;
+		}
+		.main ul.kong1 li.one,.main li.two,.main li.three{
+			list-style-position: inside;
+			list-style: none;
+		}
+		.main ul.kong1 li.one{
+			margin-bottom: 24px;
+			margin-top: 36px;
+		}
+		.main ul .rule ul.kong1 li.two{
+			margin-bottom: 24px;
+		}
+		.main ul.kong1 li.three{
+			margin-bottom: 28px;
+		}
+	
+		.rule li,.links li,.shuoming li{
+			color: #0073CB;
+			font-size:20px;
+			margin-bottom: 24px;
+			line-height: 36px;	
+		}
+		.rule .box{	
+			margin-bottom: 36px;		
+		}
+		.rule .box,.links .box,.shuoming .box{
+			margin-left: 100px;
+			float: left;
+			margin-top: 36px;
+			margin-right: 10px; 
+		}
+		.main ul.total li.paixu .rule .box img,
+		.main ul.total li.paixu .links .box img,
+		.main ul.total li.paixu .shuoming .box img{
+			width: 36px;
+			height: 36px;
+			display: block;
+		}
+		.rule .box p.box-p,.links .box  p.box-p2,.shuoming .box  p.box-p3,.shuoming .box  p.box-p4{
+			width: 2px;
+			background-color: #9bd7ff;
+			margin-left: 17px;
+		}
+		.rule .box  p.box-p{		
+			height: 24px;		
+		}
+		.links .box{			
+			margin-bottom: 90px;
+		}
+		.links .box  p.box-p2{	
+			height: 118px;		
+		}
+		.links *:focus{outline: none;}
+		.links ul li input:focus{border-color: #229cff;}
+
+		.links input.enter{
+			border:2px solid #bee2ff;
+			border-radius: 8px;
+			font-size: 20px;
+			color: #374754;
+			line-height: 50px;
+			padding-left: 10px;
+			width: 450px;
+			margin-top: 32px;
+			margin-bottom: 8px;
+		}
+		
+		.links input.btn1{
+			font-size: 20px;
+			line-height: 20px;
+			color: #A25F00;
+			background-color: #fff47d;
+			height: 51px;
+			width: 100px;
+			border-radius: 12px;
+			border:0;
+			box-shadow:0px 3px #f2d118;
+			margin-top: 8px;
+		}
+		.links ul li img.picture{
+			width: 186px;
+			height: 186px;
+			padding-top: 16px;
+			border-radius: 12px;
+			margin-bottom: 8px;
+		}
+		.no-logged-in{
+			position: absolute;
+			left: 1189.5px;
+			top:17px;
+			width: 552px;
+		}
+		.no-logged-in p.p2{
+			line-height: 44px;
+			margin-top: 48px;
+			margin-bottom: 48px;
+			text-align: center;
+		}
+		.no-logged-in *:focus{
+			outline: none;
+		}
+		.no-logged-in input.btn2{
+			height: 54px;
+			background-color: #fff47d; 
+			border-radius: 12px;
+			margin-bottom: 100px;
+			color: #A25F00;
+			font-size: 20px;
+			border:0; 
+			box-shadow:0px 3px #f2d118;
+			padding-left: 66px;
+			padding-right: 66px;
+			margin-left: 166px;
+		}
+
+		.no-logged-in p.p2,.record p.p3{
+			color: #0073CB;
+			font-size: 22px;
+		}
+		.shuoming .box{	
+			margin-bottom: 36px; 
+		}
+		.shuoming .box  p.box-p3{	
+			height: 24px;	
+		}
+		.shuoming .box  p.box-p4{
+			height: 60px;
+		}
+		.record p.p3{
+			margin-left: 100px;
+			font-size: 22px;
+			color: #0073CB;
+			margin-top: 30px;
+			margin-bottom: 30px;
+			line-height: 22px;
+		}
+		.record span.important{
+			font-size: 28px;
+			color: #0073CB;
+			font-weight: bold;
+			font-style: italic;
+		}
+		.record table.invitecontent{
+			border-collapse: collapse;
+			margin-left: 100px;
+			margin-bottom: 30px;
+		}
+		.record table.invitecontent tr td{
+			border:1px solid #ffffff;
+			background-color: #bee2ff;
+			color: #4d73BF;
+			font-size: 18px;
+			line-height: 44px;
+			padding-left: 40px;
+			padding-right: 40px;
+			text-align: center;
+		}
+		.record table.invitecontent tr.tab1 td{
+			background-color: #ffffff;
+		}
+		.record table.invitecontent tr td.border1{
+			border-left-color:#bee2ff;
+		}
+		.record table.invitecontent tr td.border2{
+			border-right-color: #bee2ff;
+		}
+		.no-logged-in{
+			background-color: #d4ecff;
+			border:2px solid #9bd7ff;
+			border-radius: 12px;
+			margin:0px auto;
+		}
+		.rule,.links,.record,.shuoming{
+			width: 1000px;
+			background-color: #d4ecff;
+			border:2px solid #9bd7ff;
+			border-radius: 12px;
+			margin:0px auto;
+		}
+		.links .no-logged-in p.r1{
+			top:40px;
+			left: 35px;
+			font-size: 26px;
+			color: #FFFFFF;
+			line-height: 26px;
+		}
+		.rule p.r1,.links p.r1,.shuoming p.r1,.record p.r1{
+			position: absolute;
+			top:59px;
+			left: 201.5px;
+			font-size: 26px;
+			color: #FFFFFF;
+			line-height: 26px;
+		}
+	</style>
+	<body>
+		<div class="header">
+			<img src="image/banner.jpg" />
+			<p class="time">活动时间：2017年9月20日--2018年1月31日</p>
+		</div>
+
+		<div class="main">
+			<ul class="total">
+
+				<li  class="paixu">
+					<div class="public">
+						<p class="lianjie"><span class="dai"></span><span class="dai2"></span></p>
+					</div>			
+					<div class="rule">
+						<img src="image/4个文字@2x.png" class="biaotilan"/>
+						<p class="r1" >邀请规则</p>
+						<div class="box">
+							<img src="image/01.png"/>
+							<p class="box-p"></p>
+							<img src="image/02.png"/>
+							<p class="box-p"></p>
+							<img src="image/03.png"/>
+						</div>
+						<div class="box2">
+						<ul  class="kong1">
+							<li class="one">
+								用户每成功邀请1名好友注册，双方各得30天VIP会员
+								</li>
+							<li class="two">
+								活动期间，每名用户最多可邀请10名尚未注册的好友进行注册；
+								</li>
+							<li class="three">
+								活动期间，用户达到10名邀请数上限后，被邀请者通过用户的邀请链接注册，依然可以获得30天VIP会员。
+							</li>
+						</ul>
+						</div>
+					</div>
+				</li>
+
+				<li class="paixu">
+					<div class="public2">
+						<p class="lianjie"><span class="dai"></span><span class="dai2"></span></p>
+					</div>
+
+					<div class="links">
+						<img src="image/多文字@2x.png" class="biaotilan" />
+						<p class="r1">专属邀请链接</p>
+						<div class="box">
+							<img src="image/01.png"/>
+							<p class="box-p2"></p>
+							<img src="image/02.png"/>
+						</div>
+						<ul class="kong1">
+							<li class="one">
+								如果在电脑端分享，可复制下面的链接：<br>
+								<input type="text" name="link-windows" class="enter" value="http://aso-test2.umlife.com/creatives"/>
+								<input type="button" name="cope-link" value="复制链接" class="btn1" >
+							</li>
+							<li class="two">
+								如果在手机端分享，可扫描下方二维码打开链接：<br>
+								<img src="image/二维码.jpg" class="picture" />
+							</li>
+						</ul>
+						<div class="no-logged-in">
+							<img src="image/多文字@2x.png" class="biaotilan" />
+							<p class="r1">专属邀请链接</p>
+							<p class="p2">您尚未登陆......<br>赶紧登录获取您的专属邀请链接吧！</p>
+							<input type="button" name="log-in" value="立即登录" class="btn2" onclick="Wopen()">
+						</div>
+					</div>
+					
+				</li>
+
+				<li class="paixu">
+					<div class="public2">
+						<p class="lianjie"><span class="dai"></span><span class="dai2"></span></p>
+					</div>
+					<div class="shuoming">
+						<img src="image/4个文字@2x.png" class="biaotilan" />
+						<p class="r1">活动说明</p>
+						<div class="box">
+							<img src="image/01.png"/>
+							<p class="box-p3"></p>
+							<img src="image/02.png"/>
+							<p class="box-p4"></p>
+							<img src="image/03.png"/>
+						</div>
+						<div class="box2">
+						<ul class="kong1">
+							<li class="one">
+								"成功邀请"的标准为“被邀请人”通过邀请人分享的链接或使用邀请码进行注册；</li>
+							<li class="two">
+								邀请好友所得VIP会员5分钟内到账，但不排除有延迟的现象；如遇延迟时间超过两天仍未到账，请联系客服；
+							</li>
+							<li class="three">
+								用户不得使用不正当手段参与活动，一经发现有作弊行为则取消其活动奖励并且封号。
+							</li>
+						</ul>
+						</div>
+					</div>
+				</li>
+
+				<li class="paixu">
+					<div class="public2">
+						<p class="lianjie"><span class="dai"></span><span class="dai2"></span></p>
+					</div>
+					<div class="record">
+						<img src="image/4个文字@2x.png" class="biaotilan" />
+						<p class="r1">邀请记录</p>
+						<p class="p3">目前成功邀请&nbsp;<span class="important">2</span>&nbsp;名好友注册，累计获得XX天VIP会员。</p>
+						<table border=1px class="invitecontent">
+							<tr class="tab1">
+								<td>序号</td>
+								<td>注册时间</td>
+								<td>被邀请人账号</td>
+								<td>被邀请人邮箱</td>
+							</tr>
+							<tr>
+								<td class="border1">1</td>
+								<td>2017.09.20</td>
+								<td>1552****971</td>
+								<td class="border2">1552****971</td>
+							</tr>
+							<tr>
+								<td class="border1">2</td>
+								<td>2017.09.20</td>
+								<td>1552****971</td>
+								<td class="border2">1552****971</td>
+							</tr>
+							<tr>
+								<td class="border1">3</td>
+								<td>2017.09.20</td>
+								<td>1552****971</td>
+								<td class="border2">1552****971</td>
+							</tr>
+							<tr>
+								<td class="border1">4</td>
+								<td>2017.09.20</td>
+								<td>1552****971</td>
+								<td class="border2">1552****971</td>
+							</tr>
+						</table>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

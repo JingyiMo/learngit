@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>美团搜索</title>
+	<style type="text/css">
+		.header{
+			height: 120px;
+			position: relative;
+		}
+		.tubiao{
+			width: 960px;
+			float: left;
+		}
+		.tubiao img{
+			margin: 15px 45px;
+		}
+		
+		.tubiao *:focus{outline: none;}
+		
+		.tubiao input{
+			border: 1px solid #48D1CC;
+		}
+		.tubiao input::-webkit-input-placeholder { /* WebKit browsers */ 
+			color: #A8A8A8; 
+		} 
+		.tubiao input.content{
+			width:500px;
+			height:42px; 
+			position: absolute;
+			top:25px; 
+			left: 350px;
+			border-top-left-radius: 5px;
+			border-bottom-left-radius: 5px;
+			font-size: 18px;
+			padding-left: 10px;
+			
+		}
+		.tubiao input.quren{
+			height: 46px;
+			width: 100px;
+			position: absolute;
+			left: 860px;
+			top:25px; 
+			border-top-right-radius: 5px;
+			border-bottom-right-radius: 5px;
+			background-image: url(image/search.jpg);
+		}
+		.search{
+			position: absolute;
+			left: 360px;
+			top:85px;
+		}
+		.search a{
+			margin-right: 10px;
+			color:#A8A8A8;
+			font-size: 14px;
+			text-decoration: none;
+		}
+		.search a:hover{
+			color: #48D1CC;
+		}
+		.back{
+			float:right;
+			margin-top:25px;
+			margin-right: 10px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="header">
+		<div class="tubiao">
+			<img src="image\meituanLoGo.jpg" >
+			<input type="text" class="content" name="sousuokuang" placeholder="搜索商家或地点" />
+			<input type="button" class="quren" name="quren" value=""  
+			/>
+			
+			</div>
+			<div class="search">
+				<a href="http://www.baidu.com/"  target="_blank">广州长隆水上乐园</a>
+				<a href="http://www.baidu.com/"  target="_blank">广州长隆欢乐世界</a>
+				<a href="http://www.baidu.com/"  target="_blank">飞扬影城</a>
+				<a href="http://www.baidu.com/"  target="_blank">华影梅花影影城</a>
+				<a href="http://www.baidu.com/"  target="_blank">金逸珠江国际影城</a>
+			</div>
+			<div class="back">
+			<a href="http://www.baidu.com/" class="anytimeback" target="_blank"><img src="image\anytimeback.jpg" class="a1" ></a>
+			<a href="http://www.baidu.com/" class="free" target="_blank"><img src="image\free.jpg" class="a2"></a>
+			<a href="http://www.baidu.com/" class="overtimeback" target="_blank"><img src="image\overtimeback.jpg" class="a3"></a>
+			</div>
+
+	</div>
+</body>
+</html>
