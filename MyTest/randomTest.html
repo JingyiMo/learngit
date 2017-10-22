@@ -1,69 +1,108 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" Content="text/html;charset=utf-8"/>
-		<title>DOM练习</title>
-		<script type="text/javascript">
-			window.onload=function(){
-				hightLigth();
-			}
-			function hightLigth(){
-				var tr=document.getElementsByTagName("tr");
-				for(var i=1;i<tr.length;i++){
-					tr[i].onmouseover=function(){
-                       this.style.backgroundColor="red";
-					}
-					tr[i].onmouseout=function(){
-						this.style.backgroundColor="#fff";
-					}
-				}
-			}
-
-			function add(){
-				var tbody=document.getElementById("table").lastChild;
-			  	var newtr=document.createElement("tr");
-
-			    var newtd=document.createElement("td");
-			    newtd.innerHTML="<input type='text'/>";
-			    newtr.appendChild(newtd);
-
-			    var newtd=document.createElement("td");
-			    newtd.innerHTML="<input type='text'/>";
-			    newtr.appendChild(newtd);
-
-				var newtd=document.createElement("td");
-				newtd.innerHTML="<a href='javascript:' onclick='del(this)'>删除</a>";
-			    newtr.appendChild(newtd);
-
-			    tbody.appendChild(newtr);
-			    hightLigth();
-			}
-
-			function del(obj){
-				var tbody=document.getElementById("table").lastChild;
-				var tr=obj.parentNode.parentNode;
-				tbody.removeChild(tr);
-			}
-		</script>
-	</head>
-	<body>
-		<table border="1px" width="50%" id="table">
-			<tr>
-				<th>学号</th>
-				<th>姓名</th>
-				<th>操作</th>
-			</tr>
-			<tr>
-				<td>xh001</td>
-				<td>王小明</td>
-				<td><a href="javascript:" onclick="del(this)">删除</a></td>
-			</tr>
-			<tr>
-				<td>xh002</td>
-				<td>李小芳</td>
-				<td><a href="javascript:" onclick="del(this)">删除</a></td>
-			</tr>
-		</table>
-		<input type="button" name="btn" value="添加一行" onclick="add()">
-	</body>
+    <head>
+        <meta http-equiv="Content-Type" Content="text/html;charset=utf-8/">
+        <title>Tab选项卡切换</title>
+       <style>
+            *{
+                margin:0px;
+                padding:0px;
+            }
+            #table{
+                margin:20px;
+            }
+            #table ul{
+                margin-top:10px;
+                margin-left:10px;
+                padding-left:0px;
+                list-style: none;
+                display: block;
+                height: 40px;
+                line-height: 40px;
+            }
+            #table ul li{
+                list-style:none;
+                display:inline-block;
+                border:1px solid red;
+                width:130px;
+                height:38px;
+                line-height:38px;
+                text-align:center;
+                cursor:pointer;
+                border-bottom:none;
+            }
+            #content div{
+                border:1px solid #abcdef;
+                border-top:2px solid #abcdef;
+                line-height:30px;
+                width:450px;
+                height:130px;
+                padding-left:20px;
+                padding-top:10px;   
+            }
+            .hide{
+                display:none;
+            }
+            #divtit ul li.on{
+                border-top:2px solid #abdcef;
+                border-bottom:2px solid #fff;
+            }
+        </style>
+        <script type="text/javascript">
+        window.onload=function(){
+            var divtit=document.getElementById("divtit");
+            var ul=divtit.getElementsByTagName("ul")[0];
+            var li=ul.getElementsByTagName("li");
+            var content=document.getElementById("content");
+            var divs=content.getElementsByTagName("div");
+            for(var i=0;i<li.length;i++){
+                li[i].index=i;
+                li[i].onclick=function(){
+                    for(var j=0;j<li.length;j++){
+                        li[j].className="";
+                        divs[j].className="hide";
+                     }
+                     this.className="on";
+                     divs[this.index].className="";
+                }
+            }
+        }
+        </script>
+    </head>
+    <body>
+        <div id="table">
+            <div id="divtit">
+            <ul>
+                <li class="on">使徒行者</li>
+                <li>使徒行者2</li>
+                <li>不懂撒娇的女人</li>
+            </ul>
+            </div>
+            <div id="content">
+                <div>
+                    林峯&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;爆seed<br/>
+                    佘诗曼&nbsp;&nbsp;&nbsp;&nbsp;钉姐<br/>
+                    苗侨伟&nbsp;&nbsp;&nbsp;&nbsp;卓sir<br/>
+                    梁烈唯&nbsp;&nbsp;&nbsp;&nbsp;木虱<br/>
+                </div>
+                
+                <div class="hide">
+                    周柏豪&nbsp;&nbsp;&nbsp;&nbsp;乐少<br/>
+                    黄翠如&nbsp;&nbsp;&nbsp;&nbsp;阿梅<br/>
+                    袁伟豪&nbsp;&nbsp;&nbsp;&nbsp;天堂哥<br/>
+                    苗侨伟&nbsp;&nbsp;&nbsp;&nbsp;卓sir<br/>
+                </div>
+                
+                <div class="hide">
+                   王浩信&nbsp;&nbsp;&nbsp;&nbsp;saving<br/> 
+                   唐诗咏&nbsp;&nbsp;&nbsp;&nbsp;cherry<br/>
+                   宣萱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Moly<br/>
+                   魏焌皓&nbsp;&nbsp;&nbsp;&nbsp;铁仁<br/>
+                </div>
+                
+            </div>
+                
+           
+        </div>
+    </body>
 </html>
