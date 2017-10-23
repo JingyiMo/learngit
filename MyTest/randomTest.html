@@ -65,23 +65,35 @@
         </style>
         <script type="text/javascript">
             window.onload=function(){
-                var titles=document.getElementById("tab-tit");
-                var ul=titles.getElementsByTagName("ul")[0];
-                var lis=ul.getElementsByTagName("li");
-                var content=document.getElementById("tab-content");
-                var divs=content.getElementsByTagName("div");
-
-                for(var i=0;i<lis.length;i++){
-                    lis[i].index=i;
-                    lis[i].onclick=function(){
+               
+               var timer=null;
+               var title=document.getElementById("tab-tit");
+               var ul=title.getElementsByTagName("ul")[0];
+               var lis=ul.getElementsByTagName("li");
+               var content=document.getElementById("tab-content");
+               var divs=content.getElementsByTagName("div");
+               if(lis.length!=divs.length){
+                return;
+               }
+               for(var i=0;i<lis.length;i++){
+                lis[i].id=i;
+                   lis[i].onmouseover=function(){
+                    var that=this;
+                    if(timer){
+                        clearTimeout(timer);
+                        timer=null;
+                    }
+                    
+                    timer=window.setTimeout(function(){
                         for(var j=0;j<lis.length;j++){
                             lis[j].className="";
                             divs[j].style.display="none";
                         }
-                        this.className="select";
-                        divs[this.index].style.display="block";
-                    }
-                }
+                        lis[that.id].className="select";
+                        divs[that.id].style.display="block";
+                    },500)
+                   }
+               }
             }
         </script>
     </head>
@@ -133,16 +145,16 @@
                 <div class="mod" style="display:none">
                     <ul>
                         <li>
-                            <span><a href="#">[通知]</a></span>林俊杰演唱会
+                            <a href="#"><span>[通知]</span>林俊杰演唱会</a>
                         </li>
                         <li>
-                            <span><a href="#">[通知]</a></span>周柏豪演唱会
+                            <a href="#"><span>[通知]</span>周柏豪演唱会</a>
                         </li>
                         <li>
-                            <span><a href="#">[通知]</a></span>周杰伦演唱会
+                            <a href="#"><span>[通知]</span>周杰伦演唱会</a>
                         </li>
                         <li>
-                            <span><a href="#">[通知]</a></span>容祖儿演唱会
+                            <a href="#"><span>[通知]</span>容祖儿演唱会</a>
                         </li>
                     </ul>
                 </div>
