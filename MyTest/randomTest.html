@@ -1,108 +1,152 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
     <head>
         <meta http-equiv="Content-Type" Content="text/html;charset=utf-8/">
-        <title>Tab选项卡切换</title>
-       <style>
+        <title>Tab选项卡切换demo</title>
+        <style>
             *{
                 margin:0px;
                 padding:0px;
+                list-style: none;
             }
             #table{
-                margin:20px;
+                width:398px;
+                height: 98px;
+                border:1px solid #eee;             
+                margin:10px;
+                overflow:hidden;
             }
-            #table ul{
-                margin-top:10px;
-                margin-left:10px;
-                padding-left:0px;
-                list-style: none;
-                display: block;
-                height: 40px;
-                line-height: 40px;
-            }
-            #table ul li{
-                list-style:none;
-                display:inline-block;
-                border:1px solid red;
-                width:130px;
-                height:38px;
-                line-height:38px;
+            .tab-tit{
+                height: 35px;
+                
+                position: relative;
+           }
+           .tab-tit ul{
+                position:absolute;
+                width:401px;
+                left:-1px;
+           }
+            .tab-tit ul li{ 
+                float:left;
+                width:78px;
+                height:34px;
+                line-height:34px;
+                border-bottom:1px solid #eee;
                 text-align:center;
-                cursor:pointer;
-                border-bottom:none;
+                overflow:hidden;
+                padding:0px 1px;
+                background:#F7F7F7;
+                
             }
-            #content div{
-                border:1px solid #abcdef;
-                border-top:2px solid #abcdef;
-                line-height:30px;
-                width:450px;
-                height:130px;
-                padding-left:20px;
-                padding-top:10px;   
+            .tab-tit li.select{
+                background: #FFF;
+                border-bottom-color:#FFF;
+                border-left:1px solid #eee;
+                border-right:1px solid #eee;
+                padding: 0px;
+                font-weight:bolder;
             }
-            .hide{
-                display:none;
+            #table li a:link,#table li a:visited{
+                text-decoration:none;
+                color:#000;
             }
-            #divtit ul li.on{
-                border-top:2px solid #abdcef;
-                border-bottom:2px solid #fff;
+            #table li a:hover{
+                color:#F90;
+            }
+            .tab-content .mod{
+                margin:10px 20px 10px 24px;
+            }
+            .tab-content .mod ul li{
+                float:left;
+                width:177px;
+                height:25px;
+                overflow: hidden;
             }
         </style>
         <script type="text/javascript">
-        window.onload=function(){
-            var divtit=document.getElementById("divtit");
-            var ul=divtit.getElementsByTagName("ul")[0];
-            var li=ul.getElementsByTagName("li");
-            var content=document.getElementById("content");
-            var divs=content.getElementsByTagName("div");
-            for(var i=0;i<li.length;i++){
-                li[i].index=i;
-                li[i].onclick=function(){
-                    for(var j=0;j<li.length;j++){
-                        li[j].className="";
-                        divs[j].className="hide";
-                     }
-                     this.className="on";
-                     divs[this.index].className="";
+            window.onload=function(){
+                var titles=document.getElementById("tab-tit");
+                var ul=titles.getElementsByTagName("ul")[0];
+                var lis=ul.getElementsByTagName("li");
+                var content=document.getElementById("tab-content");
+                var divs=content.getElementsByTagName("div");
+
+                for(var i=0;i<lis.length;i++){
+                    lis[i].index=i;
+                    lis[i].onclick=function(){
+                        for(var j=0;j<lis.length;j++){
+                            lis[j].className="";
+                            divs[j].style.display="none";
+                        }
+                        this.className="select";
+                        divs[this.index].style.display="block";
+                    }
                 }
             }
-        }
         </script>
     </head>
     <body>
         <div id="table">
-            <div id="divtit">
-            <ul>
-                <li class="on">使徒行者</li>
-                <li>使徒行者2</li>
-                <li>不懂撒娇的女人</li>
-            </ul>
+            <div id="tab-tit" class="tab-tit">
+                <ul>
+                    <li class="select"><a href="#" >电影</a></li>
+                    <li><a href="#">电视剧</a></li>
+                    <li><a href="#">综艺</a></li>
+                    <li><a href="#">音乐</a></li>
+                    <li><a href="#">演唱会</a></li>
+                </ul>
             </div>
-            <div id="content">
-                <div>
-                    林峯&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;爆seed<br/>
-                    佘诗曼&nbsp;&nbsp;&nbsp;&nbsp;钉姐<br/>
-                    苗侨伟&nbsp;&nbsp;&nbsp;&nbsp;卓sir<br/>
-                    梁烈唯&nbsp;&nbsp;&nbsp;&nbsp;木虱<br/>
+            <div id="tab-content" class="tab-content">
+                <div class="mod" >
+                    <ul>
+                        <li><a href="#">使徒行者</a></li>
+                        <li><a href="#">再次出发</a></li>
+                        <li><a href="#">放牛班的春天</a></li>
+                        <li><a href="#">海上钢琴师</a></li>
+                    </ul>
+                </div>
+                <div class="mod" style="display:none">
+                    <ul>
+                        <li><a href="#">使徒行者</a></li>
+                        <li><a href="#">踩过界</a></li>
+                        <li><a href="#">不懂撒娇的女人</a></li>
+                        <li><a href="#">on call 36小时</a></li>
+                    </ul>
+                </div>
+                <div class="mod" style="display:none">
+                    <ul>
+                        <li><a href="#">放开我北鼻</a></li>
+                        <li><a href="#">奔跑吧兄弟</a></li>
+                        <li><a href="#">极限挑战</a></li>
+                        <li><a href="#">高能少年团</a></li>
+                    </ul>
                 </div>
                 
-                <div class="hide">
-                    周柏豪&nbsp;&nbsp;&nbsp;&nbsp;乐少<br/>
-                    黄翠如&nbsp;&nbsp;&nbsp;&nbsp;阿梅<br/>
-                    袁伟豪&nbsp;&nbsp;&nbsp;&nbsp;天堂哥<br/>
-                    苗侨伟&nbsp;&nbsp;&nbsp;&nbsp;卓sir<br/>
+                <div class="mod" style="display:none">
+                    <ul>
+                        <li><a href="#">可惜没有如果</a></li>
+                        <li><a href="#">不为谁而作的歌</a></li>
+                        <li><a href="#">小酒窝</a></li>
+                        <li><a href="#">修炼爱情</a></li>
+                    </ul>
                 </div>
-                
-                <div class="hide">
-                   王浩信&nbsp;&nbsp;&nbsp;&nbsp;saving<br/> 
-                   唐诗咏&nbsp;&nbsp;&nbsp;&nbsp;cherry<br/>
-                   宣萱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Moly<br/>
-                   魏焌皓&nbsp;&nbsp;&nbsp;&nbsp;铁仁<br/>
+                <div class="mod" style="display:none">
+                    <ul>
+                        <li>
+                            <span><a href="#">[通知]</a></span>林俊杰演唱会
+                        </li>
+                        <li>
+                            <span><a href="#">[通知]</a></span>周柏豪演唱会
+                        </li>
+                        <li>
+                            <span><a href="#">[通知]</a></span>周杰伦演唱会
+                        </li>
+                        <li>
+                            <span><a href="#">[通知]</a></span>容祖儿演唱会
+                        </li>
+                    </ul>
                 </div>
-                
             </div>
-                
-           
         </div>
     </body>
 </html>
