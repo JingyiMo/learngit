@@ -73,14 +73,41 @@
                 li=ul.getElementsByTagName("li"),
                 content=document.getElementById("tab-content");
                 divs=content.getElementsByTagName("div");
+               for(var i=0;i<li.length;i++){
+                    li[i].id=i;         
+                    li[i].onmouseover=function(){
+                        clearInterval(timer);
+                        for(var j=0;j<li.length;j++){
+                            li[j].className="";
+                            divs[j].style.display="none";
+                        }
+                         li[this.id].className="select";
+                         divs[this.id].style.display="block";
+                    }
+
+                    li[i].onmouseout=function(){
+                        timer=setInterval(function(){
+                            index++;
+                            if(index>=li.length){
+                                index=0;
+                            }
+                            for(var j=0;j<li.length;j++){
+                                li[j].className="";
+                                divs[j].style.diaplay="none";
+                            }
+                            li[index].className="select";
+                            divs[index].style.display="block";
+                        },2000);
+                    }
+                }
                 timer=setInterval(function(){
                     index++;
                     if(index>=li.length){
                         index=0;
                     }
-                    for(var i=0;i<li.length;i++){
-                        li[i].className="";
-                        divs[i].style.display="none";
+                    for(var j=0;j<li.length;j++){
+                        li[j].className="";
+                        divs[j].style.display="none";
                     }
                     li[index].className="select";
                     divs[index].style.display="block";
