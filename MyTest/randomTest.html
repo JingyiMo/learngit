@@ -77,41 +77,31 @@
                     li[i].id=i;         
                     li[i].onmouseover=function(){
                         clearInterval(timer);
-                        for(var j=0;j<li.length;j++){
-                            li[j].className="";
-                            divs[j].style.display="none";
-                        }
-                         li[this.id].className="select";
-                         divs[this.id].style.display="block";
+                        changeoption(this.id);
                     }
 
                     li[i].onmouseout=function(){
-                        timer=setInterval(function(){
-                            index++;
-                            if(index>=li.length){
-                                index=0;
-                            }
-                            for(var j=0;j<li.length;j++){
-                                li[j].className="";
-                                divs[j].style.diaplay="none";
-                            }
-                            li[index].className="select";
-                            divs[index].style.display="block";
-                        },2000);
+                        timer=setInterval(autoPlay,2000); 
                     }
                 }
-                timer=setInterval(function(){
+                timer=setInterval(autoPlay,2000);
+
+                function autoPlay(){
                     index++;
                     if(index>=li.length){
                         index=0;
                     }
+                    changeoption(index);
+                }
+
+                function changeoption(curindex){
                     for(var j=0;j<li.length;j++){
                         li[j].className="";
                         divs[j].style.display="none";
                     }
-                    li[index].className="select";
-                    divs[index].style.display="block";
-                },2000);
+                    li[curindex].className="select";
+                    divs[curindex].style.display="block";
+                }
 
           }
         </script>
