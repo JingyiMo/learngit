@@ -64,37 +64,29 @@
             }
         </style>
         <script type="text/javascript">
-            window.onload=function(){
-               
-               var timer=null;
-               var title=document.getElementById("tab-tit");
-               var ul=title.getElementsByTagName("ul")[0];
-               var lis=ul.getElementsByTagName("li");
-               var content=document.getElementById("tab-content");
-               var divs=content.getElementsByTagName("div");
-               if(lis.length!=divs.length){
-                return;
-               }
-               for(var i=0;i<lis.length;i++){
-                lis[i].id=i;
-                   lis[i].onmouseover=function(){
-                    var that=this;
-                    if(timer){
-                        clearTimeout(timer);
-                        timer=null;
+          window.onload=tab;
+          function tab(){
+            var index=0;
+            var timer=null;
+            var titles=document.getElementById("tab-tit"),
+                ul=titles.getElementsByTagName("ul")[0],
+                li=ul.getElementsByTagName("li"),
+                content=document.getElementById("tab-content");
+                divs=content.getElementsByTagName("div");
+                timer=setInterval(function(){
+                    index++;
+                    if(index>=li.length){
+                        index=0;
                     }
-                    
-                    timer=window.setTimeout(function(){
-                        for(var j=0;j<lis.length;j++){
-                            lis[j].className="";
-                            divs[j].style.display="none";
-                        }
-                          that.className="select";
-                        divs[that.id].style.display="block";
-                    },500)
-                   }
-               }
-            }
+                    for(var i=0;i<li.length;i++){
+                        li[i].className="";
+                        divs[i].style.display="none";
+                    }
+                    li[index].className="select";
+                    divs[index].style.display="block";
+                },2000);
+
+          }
         </script>
     </head>
     <body>
