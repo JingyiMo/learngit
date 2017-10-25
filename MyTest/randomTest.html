@@ -1,179 +1,33 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <meta http-equiv="Content-Type" Content="text/html;charset=utf-8/">
-        <title>Tab选项卡切换demo</title>
-        <style>
-            *{
-                margin:0px;
-                padding:0px;
-                list-style: none;
-            }
-            #table{
-                width:398px;
-                height: 98px;
-                border:1px solid #eee;             
-                margin:10px;
-                overflow:hidden;
-            }
-            .tab-tit{
-                height: 35px;
-                
-                position: relative;
-           }
-           .tab-tit ul{
-                position:absolute;
-                width:401px;
-                left:-1px;
-           }
-            .tab-tit ul li{ 
-                float:left;
-                width:78px;
-                height:34px;
-                line-height:34px;
-                border-bottom:1px solid #eee;
-                text-align:center;
-                overflow:hidden;
-                padding:0px 1px;
-                background:#F7F7F7;
-                
-            }
-            .tab-tit li.select{
-                background: #FFF;
-                border-bottom-color:#FFF;
-                border-left:1px solid #eee;
-                border-right:1px solid #eee;
-                padding: 0px;
-                font-weight:bolder;
-            }
-            #table li a:link,#table li a:visited{
-                text-decoration:none;
-                color:#000;
-            }
-            #table li a:hover{
-                color:#F90;
-            }
-            .tab-content .mod{
-                margin:10px 20px 10px 24px;
-            }
-            .tab-content .mod ul li{
-                float:left;
-                width:177px;
-                height:25px;
-                overflow: hidden;
-            }
-        </style>
+        <meta http-equiv="Content-Type" Content="text/html;charset=utf-8"/>
+        <title>发送验证码倒计时</title>
         <script type="text/javascript">
-          window.onload=tab;
-          function tab(){
-            var index=0;
-            var timer=null;
-            var titles=document.getElementById("tab-tit"),
-                ul=titles.getElementsByTagName("ul")[0],
-                li=ul.getElementsByTagName("li"),
-                content=document.getElementById("tab-content");
-                divs=content.getElementsByTagName("div");
-               for(var i=0;i<li.length;i++){
-                    li[i].id=i;         
-                    li[i].onmouseover=function(){
+           window.onload=function(){
+            var send=document.getElementById("send");
+            timer=null;
+            times=60;
+            send.onclick=function(){
+                timer=setInterval(function(){
+                    times--;
+                    if(times<=0){
                         clearInterval(timer);
-                        changeoption(this.id);
+                        send.value="发送验证码";
+                        timer=null;
+                        times=60;  
+                        send.removeAttribute("disabled");
                     }
-
-                    li[i].onmouseout=function(){
-                        timer=setInterval(autoPlay,2000); 
+                    else{
+                         send.value=times+"秒后重试";
+                         send.disabled="true";
                     }
-                }
-
-                if(timer){
-                    clearInterval(autoPlay,2000);
-                    timer=null;
-                }
-                timer=setInterval(autoPlay,2000);
-
-                function autoPlay(){
-                    index++;
-                    if(index>=li.length){
-                        index=0;
-                    }
-                    changeoption(index);
-                }
-
-                function changeoption(curIndex){
-                    for(var j=0;j<li.length;j++){
-                        li[j].className="";
-                        divs[j].style.display="none";
-                    }
-                    li[curIndex].className="select";
-                    divs[curIndex].style.display="block";
-                    index=curIndex;
-                }
-
-          }
+                },1000);
+            }
+           }
         </script>
     </head>
     <body>
-        <div id="table">
-            <div id="tab-tit" class="tab-tit">
-                <ul>
-                    <li class="select"><a href="#" >电影</a></li>
-                    <li><a href="#">电视剧</a></li>
-                    <li><a href="#">综艺</a></li>
-                    <li><a href="#">音乐</a></li>
-                    <li><a href="#">演唱会</a></li>
-                </ul>
-            </div>
-            <div id="tab-content" class="tab-content">
-                <div class="mod" >
-                    <ul>
-                        <li><a href="#">使徒行者</a></li>
-                        <li><a href="#">再次出发</a></li>
-                        <li><a href="#">放牛班的春天</a></li>
-                        <li><a href="#">海上钢琴师</a></li>
-                    </ul>
-                </div>
-                <div class="mod" style="display:none">
-                    <ul>
-                        <li><a href="#">使徒行者</a></li>
-                        <li><a href="#">踩过界</a></li>
-                        <li><a href="#">不懂撒娇的女人</a></li>
-                        <li><a href="#">on call 36小时</a></li>
-                    </ul>
-                </div>
-                <div class="mod" style="display:none">
-                    <ul>
-                        <li><a href="#">放开我北鼻</a></li>
-                        <li><a href="#">奔跑吧兄弟</a></li>
-                        <li><a href="#">极限挑战</a></li>
-                        <li><a href="#">高能少年团</a></li>
-                    </ul>
-                </div>
-                
-                <div class="mod" style="display:none">
-                    <ul>
-                        <li><a href="#">可惜没有如果</a></li>
-                        <li><a href="#">不为谁而作的歌</a></li>
-                        <li><a href="#">小酒窝</a></li>
-                        <li><a href="#">修炼爱情</a></li>
-                    </ul>
-                </div>
-                <div class="mod" style="display:none">
-                    <ul>
-                        <li>
-                            <a href="#"><span>[通知]</span>林俊杰演唱会</a>
-                        </li>
-                        <li>
-                            <a href="#"><span>[通知]</span>周柏豪演唱会</a>
-                        </li>
-                        <li>
-                            <a href="#"><span>[通知]</span>周杰伦演唱会</a>
-                        </li>
-                        <li>
-                            <a href="#"><span>[通知]</span>容祖儿演唱会</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <input type="button" id="send" value="发送验证码">
     </body>
 </html>
