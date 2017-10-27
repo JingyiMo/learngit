@@ -96,14 +96,31 @@
         }        
 
         function animate(offset){
+          
+          var time=350;  //每次位移的总时间
+          var interval=10;   //位移的间隔时间
+          var speed=offset/(time/interval);  //每次位移量
           var newLeft=parseInt(list.style.left)+offset;
-          list.style.left=newLeft+"px";
-          if(newLeft > -800){
-            list.style.left=-5600+"px";
+          
+
+          function go(){
+              
+              if((speed<0&&parseInt(list.style.left)>newLeft)|| (speed>0&&parseInt(list.style.left)<newLeft)){
+                list.style.left=parseInt(list.style.left)+speed+"px";
+                setTimeout(go,interval);
+              }
+              else{
+               
+                list.style.left=newLeft+"px";
+                if(newLeft > -800){
+                  list.style.left=-5600+"px";
+                }
+                if(newLeft < -5600){
+                  list.style.left=-800+"px";
+                }
+              }
           }
-          if(newLeft < -5600){
-            list.style.left=-800+"px";
-          }
+          go();
         }
 
         next.onclick=function(){
@@ -111,7 +128,9 @@
           if(index>btns.length){
             index=1;
           }
-          animate(-800);
+         
+             animate(-800);
+          
           showbtns();
         }
         before.onclick=function(){
@@ -119,7 +138,9 @@
            if(index<1){
             index=btns.length;
           }
-          animate(800);
+          
+            animate(800);
+          
           showbtns();
         }
 
@@ -130,7 +151,9 @@
             }
             var myindex=parseInt(this.getAttribute("index"));
             offset=-800*(myindex-index);
-            animate(offset);
+            
+              animate(offset);
+            
             index=myindex;
             showbtns();
            
