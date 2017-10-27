@@ -85,6 +85,8 @@
         var before=document.getElementById("before");
         var next=document.getElementById("next");
         var index=1;
+        var animated=false;
+        var timer;
 
         function showbtns(){
           for(var i=0;i<btns.length;i++){
@@ -96,7 +98,7 @@
         }        
 
         function animate(offset){
-          
+          animated=true;
           var time=350;  //每次位移的总时间
           var interval=10;   //位移的间隔时间
           var speed=offset/(time/interval);  //每次位移量
@@ -110,7 +112,7 @@
                 setTimeout(go,interval);
               }
               else{
-               
+                animated=false;
                 list.style.left=newLeft+"px";
                 if(newLeft > -800){
                   list.style.left=-5600+"px";
@@ -123,25 +125,38 @@
           go();
         }
 
+        function autoplay(){
+          timer=setInterval(function(){
+            next.onclick();
+          },3000);
+        }
+        
+        function stop(){
+          clearInterval(timer);
+        }
+
         next.onclick=function(){
           index+=1;
           if(index>btns.length){
             index=1;
           }
-         
-             animate(-800);
+          if(!animated){
+            animate(-800);
+            }      
+             showbtns();
           
-          showbtns();
+
         }
         before.onclick=function(){
           index-=1;
            if(index<1){
             index=btns.length;
           }
+          if(!animated){
+            animate(800); 
+          }
           
-            animate(800);
-          
-          showbtns();
+           showbtns();
         }
 
         for(var i=0;i<btns.length;i++){
@@ -151,14 +166,19 @@
             }
             var myindex=parseInt(this.getAttribute("index"));
             offset=-800*(myindex-index);
-            
-              animate(offset);
-            
-            index=myindex;
-            showbtns();
+            if(!animated){
+              animate(offset); 
+            }
+              
+              index=myindex;
+              showbtns();
            
           }
         }
+
+        container.onmouseover=stop;
+        container.onmouseout=autoplay;
+        autoplay();
 
       }
     </script>
