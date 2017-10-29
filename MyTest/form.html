@@ -1,0 +1,249 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=uutf-8"/>
+    <title>表单验证</title>
+    <style>
+      *{
+        margin:0px;
+        padding:0px;
+      }
+      form *:focus{outline:none;}
+      form div input:focus{border-color:#F90;}
+      form{
+        margin:50px 0px 15px 50px;
+      }
+      form div{
+      
+       clear:both;
+      }
+      form div label{
+        float:left;
+        clear:both;
+      }
+      form div label .text{
+         width:206px;
+         height:30px;
+         border:1px solid #ccc;
+      }
+      form div label b{
+        font-weight:normal;
+        color:#ccc;
+        font-size:12px;
+        visibility: hidden;
+      }
+      form div label em{
+        display:inline-block;
+        width:70px;
+        text-align:center;
+        background-color:#FFD099;
+        color:#fff;
+        vertical-align:middle;
+        font-style:normal;
+        font-size:13px;
+        height:16px;
+        line-height:16px;
+      }
+      form div .active{
+        background-color:#FF6600;
+      }
+      
+      form div span{
+        display:inline-block;
+        width:80px;
+        text-align:right;
+
+      }
+      .msg{
+        display:none;
+        margin-left:10px;
+        line-height:30px;
+        color:#999;
+        float:left;    
+      }
+      .msg i{
+        display:inline-block;
+        vertical-align:middle;
+      }
+       
+     
+
+      .btn{
+        margin:10px 0px 0px 80px;
+        width:150px;
+        height:30px;
+        line-height:30px;
+        background: #F90;
+      }
+      
+    </style>
+    <script type="text/javascript">
+      function getLength(str){
+          return str.replace(/[^\x00-xff]/g,"xx").length;
+      }
+      function findstr(str,n){
+        var tmp=0;
+          for(var i=0;i<str.length;i++){
+            if(str.charAt(i)==n){
+                tmp++;
+            }
+          }
+          return tmp;
+      }
+      window.onload=function(){
+        var alnInput=document.getElementsByTagName("input");
+        var oName=alnInput[0];
+        var pwd=alnInput[1];
+        var pwd2=alnInput[2];
+        var ap=document.getElementsByTagName("p");
+        var Name_msg=ap[0];
+        var pwd_msg=ap[1];
+        var pwd2_msg=ap[2];
+        var count=document.getElementById("count");
+        var em=document.getElementsByTagName("em");
+        
+        var name_length=0;
+
+        oName.onfocus=function(){
+          Name_msg.style.display="block";
+          Name_msg.innerHTML="<i class='ati'></i>5-25个字符，一个汉字为两个字符，推荐使用中文名会员名";
+        }
+
+        oName.onkeyup=function(){
+            count.style.visibility="visible";
+            name_length=getLength(this.value);
+            count.innerHTML=name_length+"个字符";
+            if(name_length==''){
+              count.style.visibility="hidden";
+            }
+
+        }
+
+        oName.onblur=function(){
+          var re=/[^\w\u4e00-\u9fa5]/g;    //在全局变量中匹配非字符
+          if(name_length>25){
+              Name_msg.innerHTML="超过25个字符";
+          }
+          else if(name_length<6&&name_length>0){
+            Name_msg.innerHTML="不能少于6个字符";
+          }
+          else if(this.value==""){
+            Name_msg.innerHTML="内容不能为空";
+          }
+          else if(re.test(this.value)){
+            Name_msg.innerHTML="含有非法字符";
+          }
+          else{
+            Name_msg.innerHTML="OK";
+          }
+
+        }
+
+        pwd.onfocus=function(){
+          pwd_msg.style.display="block";
+          pwd_msg.innerHTML='<i class="ati"></i>6-16个字符，请使用字母加数字或符号的组合密码，不能单独使用字母、数字或符号';
+        }
+
+        pwd.onkeyup=function(){
+          if(this.value.length>5){
+            em[1].className="active";
+            pwd2.removeAttribute("disabled");
+            pwd2_msg.style.display="block";
+          }
+          else{
+            em[1].className="";
+            pwd2.setAttribute("disabled","");
+            pwd2_msg.style.display="none";
+           
+          }
+          if(this.value.length>10){
+            em[2].className="active";
+          }
+          else{
+            em[2].className="";
+          }
+
+        }
+
+        pwd.onblur=function(){
+          //不能全为数字
+          //不能全为字母
+          //不能少于6个字符，不能多于16个字符
+          //不能用相同字符
+          //不能为空
+          //ok
+          var re_n=/[^\d]/g;
+          var re_zm=/[^a-zA-Z]/g;
+          var m=findstr(pwd.value,pwd.value[0]);
+          if(pwd.value==""){
+            pwd_msg.innerHTML="不能为空";
+          }
+          else if(m==this.value.length){
+            pwd_msg.innerHTML="不能用相同字符";
+          }
+          else if(this.value.length<6 || this.value.length>16){
+            pwd_msg.innerHTML="需要在6-16个字符之间";
+          }
+          else if(!re_n.test(this.value)){
+            pwd_msg.innerHTML="不能全为数字";
+          }
+          else if(!re_zm.test(this.value)){
+            pwd_msg.innerHTML="不能全为字母";
+          }
+          else{
+            pwd_msg.innerHTML="OK";
+          }
+        }
+
+        pwd2.onblur=function(){
+          if(this.value!=pwd.value){
+            pwd2_msg.innerHTML="两次输入的密码不一致!!1";
+          }
+          else{
+            pwd2_msg.innerHTML="OK";
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <form>
+    <div>
+      <label>
+        <span>会员名：</span><input type="text" class="text" />
+      </label>
+      <p class="msg"><i class="ati" ></i>5-25个字符，一个汉字为两个字符，推荐使用中文名会员名</p>
+    </div>
+    <div>
+      <label>
+        <span></span><b id="count">0个字符</b>
+      </label>
+    </div>
+    <div>
+      <label>
+        <span>登录密码：</span><input type="password" class="text"/>
+      </label>
+        <p class="msg"><i class="err"></i>5-25个字符，一个汉字为两个字符，推荐使用中文名会员名</p>
+    </div>
+    <div style="margin:3px 0 10px 0">
+      <label >
+        <span></span><em class="active">弱</em><em >中</em><em>强</em>
+      </label>
+    </div>
+    <div style="margin-bottom:20px;">
+      <label>
+        <span>确认密码：</span><input type="password" class="text" disabled=""/>
+      </label>
+      <p class="msg"><i class="ati"></i>请输入一次</p>
+    </div>
+    <div>
+      <label>
+        <span>验证码：</span><input type="text" class="text" style="width:50px"/>
+      </label>
+    </div>
+    <div>
+      <input type="button" class="btn" value="同意协议并注册"/>
+    </div>
+    </form>
+  </body>
+</html>
