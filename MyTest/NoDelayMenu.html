@@ -1,0 +1,244 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" Content="text/html;charset=utf-8"/>
+		<title>京东无延迟菜单</title>
+		<style>
+			*{
+				margin:0px;
+				padding:0px;
+			}
+			.wrap{
+				position:relative;
+				top:50px;
+				left:50px;
+				
+			}
+			ul{
+				background:#6c6669;
+				width:220px;
+				list-style:none;
+				padding:15px 0px;
+				color:#fff;
+			}
+			li{
+				color:#fff;
+				display:block;
+				height:30px;
+				line-height:30px;
+				padding-left:15px;
+				cursor:pointer;
+				
+			}
+			.active{
+				background:#999395;
+			}
+			li span:hover{
+				color:#c81623;
+			}
+			
+			#sub{
+				position:absolute;
+				top:0;
+				left:220px;
+				width:700px;
+				border:1px solid #f7f7f7;
+				background:#f7f7f7;
+				box-shadow:2px 0 5px rgba(0,0,0,.3);
+				box-sizing:border-box;
+				margin:0;
+				padding:10px;
+			}
+
+			.sub_content a{
+				text-decoration:none;
+				font-size:12px;
+				color:#666;
+			}
+			.sub_content dd a{
+				border-left:1px solid #e0e0e0;
+				padding:0 10px;
+				margin:4px 0px;
+
+			}
+			.sub_conetent dl{
+				overflow:hidden;
+			}
+			.sub_content dt {
+				float:left;
+				width:70px;
+				font-weight:bold;
+				clear:left;
+				position:relative;
+			}
+
+			.sub_content dd{
+				float:left;
+				margin-left:5px;
+				margin-bottom:5px;
+				border-top:1px solid #eee;
+			}
+			
+			.sub_content dt i{
+				width:4px;
+				height:14px;
+				font:400 9px/14px consolas;
+				position:absolute;
+				right:5px;
+				top:5px;
+			}
+			
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var sub=document.getElementById("sub");
+				var sub_content=sub.getElementsByTagName("div");
+				var test=document.getElementById("test");
+				var ul=test.getElementsByTagName("ul")[0];
+				var li=ul.getElementsByTagName("li");
+				
+
+			}
+		</script>
+	</head>
+	<body>
+		<div class="wrap" id="test">
+			<ul>
+				<li  className="">
+					<span>家用电器</span>
+				</li>
+				<li >
+					<span>手机 / 运营商 /数码</span>
+				</li>
+				<li >
+					<span>家居 / 家具 / 家装 /厨具</span>
+				</li>
+				<li>
+					<span>男装 / 女装 / 童装 / 内衣</span>
+				</li>
+				<li>
+					<span>美妆个护 / 宠物</span>
+				</li>
+				<li >
+					<span>女鞋 / 箱包 / 钟表 / 珠宝</span>
+				</li>
+				<li >
+					<span>男鞋 / 运动 / 户外</span>
+				</li>
+				<li >
+					<span>汽车 / 汽车用品</span>
+				</li>
+				<li>
+					<span>母婴 / 玩具乐器</span>
+				</li>
+				<li>
+					<span>食品 / 酒类 / 生鲜 / 特产</span>
+				</li>
+				<li>
+					<span>礼品鲜花 / 农资绿植</span>
+				</li>
+				<li>
+					<span>医药保健 / 计生情趣</span>
+				</li>
+				<li>
+					<span>图书 / 音像 / 电子书</span>
+				</li>
+				<li>
+					<span>机票 / 酒店 / 旅游 / 生活</span>
+				</li>
+				<li>
+					<span>理财 / 众筹 / 白条 / 保险</span>
+				</li>
+			</ul>
+			<div id="sub" style="display:">
+				<div class="sub_content" style="display:">
+					<dl>
+						<dt>
+							<a href="#">电视<i>&gt;</i></a>
+						</dt>
+						<dd>
+							<a href="#">曲面电视</a>
+							<a href="#">超薄电视</a>
+							<a href="#">HDR电视</a>
+							<a href="#">OLED电视</a>
+							<a href="#">4K超清电视</a>
+							<a href="#">55寸</a>
+							<a href="#">65寸</a>
+							<a href="#">电视配件</a>
+							
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<a href="#">空调<i>&gt;</i></a>
+						</dt>
+						<dd>
+							<a href="#">挂壁式空调</a>
+							<a href="#">柜式空调</a>
+							<a href="#">中央空调</a>
+							<a href="#">依旧换新</a>
+							<a href="#">0元安装</a>
+							<a href="#">空调配件</a>
+						</dd>
+					</dl>
+				</div>
+				<div class="sub_content" style="display:none">
+					<dl>
+						<dt>
+							<a href="#">手机通讯<i>&gt;</i></a>
+						</dt>
+						<dd>
+							<a href="#">手机</a>
+							<a href="#">对讲机</a>
+							<a href="#">以旧换新</a>
+							<a href="#">手机维护</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<a href="#">运营商<i>&gt;</i></a>
+						</dt>
+						<dd>
+							<a href="#">合约机</a>
+							<a href="#">选号码</a>
+							<a href="#">固定宽带</a>
+							<a href="#">办套餐</a>
+							<a href="#">充话费</a>
+							<a href="#">中国移动</a>
+							<a href="#">中国联通</a>
+							<a href="#">中国电信</a>
+						</dd>
+					</dl>
+				</div>
+				<div class="sub_content" style="display:none">
+					<dl>
+						<dt>
+							<a href="#">电脑整机<i>&gt;</i></a>
+						</dt>
+						<dd>
+							<a href="#">笔记本</a>
+							<a href="#">台式电脑</a>
+							<a href="#">平板电脑</a>
+							<a href="#">一体机</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<a href="#">办公设备<i>&gt;</i></a>
+						</dt>
+						<dd>
+							<a href="#">打印机</a>
+							<a href="#">投影机</a>
+							<a href="#">传真机</a>
+							<a href="#">碎纸机</a>
+							<a href="#">考勤机</a>
+							<a href="#">验钞机</a>
+							<a href="#">保险柜</a>
+							<a href="#">白板</a>
+						</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
