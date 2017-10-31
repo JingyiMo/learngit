@@ -27,9 +27,7 @@
 				text-align:center;
 				position:relative;	
 			}
-			ul li:hover ul{
-				display:block;
-			}
+			
 			a{
 				text-decoration:none;
 				color:#000;
@@ -49,7 +47,7 @@
 			ul li ul{
 				position:absolute;
 				top:40px;
-				display:none;
+				
 			}
 			ul li ul li a{
 				width:90px;
@@ -59,41 +57,50 @@
 				background-color:#06F;
 			}
 		</style>
+		<script type="text/javascript">
+			function showMenu(li){
+				var submenu=li.getElementsByTagName("ul")[0];
+				submenu.style.display="block";
+			}
+			function hideMenu(li){
+				var submenu=li.getElementsByTagName("ul")[0];
+				submenu.style.display="none";
+			}
+		</script>
 	</head>
 	<body>
 		<div id="menu">
 			<ul>
 				<li><a href="#">首页</a></li>
-				<li>
+				<li onmouseover="showMenu(this)" onmouseout="hideMenu(this)" >
 					<a href="#">课程大厅</a>
-					<ul>
+					<ul style="display:none">
 						<li><a href="#">html</a></li>
 						<li><a href="#">css</a></li>
 						<li><a href="#">javascript</a></li>
 					</ul>	
 				</li>
-				<li>
-					<a href="#">学习中心</a>
-					<ul>
-						<li><a href="#">html</a></li>
-						<li><a href="#">css</a></li>
-						<li><a href="#">javascript</a></li>
+				<li onmouseover="showMenu(this)" onmouseout="hideMenu(this)">
+					<a href="#" >学习中心</a>
+					<ul style="display:none">
+						<li><a href="#">视频学习</a></li>
+						<li><a href="#">案例学习</a></li>
+						<li><a href="#">交流平台</a></li>
 					</ul>	
 				</li>
-				<li>
-					<a href="#">经典案例</a>
-					<ul>
-						<li><a href="#">html</a></li>
-						<li><a href="#">css</a></li>
-						<li><a href="#">javascript</a></li>
+				<li onmouseover="showMenu(this)" onmouseout="hideMenu(this)">
+					<a href="#" >经典案例</a>
+					<ul style="display:none">
+						<li><a href="#">案例一</a></li>
+						<li><a href="#">案例二</a></li>
+						
 					</ul>
 				</li>
-				<li>
+				<li onmouseover="showMenu(this)" onmouseout="hideMenu(this)">
 					<a href="#">关于我们</a>
-					<ul>
-						<li><a href="#">html</a></li>
-						<li><a href="#">css</a></li>
-						<li><a href="#">javascript</a></li>
+					<ul style="display:none">
+						<li><a href="#">帮助</a></li>
+						<li><a href="#">关于</a></li>	
 					</ul>
 				</li>
 			</ul>
