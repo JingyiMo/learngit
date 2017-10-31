@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" Content="text/html;charset=utf-8"/>
+		<title>下拉菜单</title>
+		<style>
+            *{
+            	margin:0px;
+            	padding:0px;
+            }		
+			#menu{
+				height:40px;
+				width:450px;
+				background:#eee;
+				margin:0 auto;
+			}
+			ul{
+				list-style:none;
+
+			}
+			li{
+				list-style:none;
+				float:left;
+				height:40px;
+				line-height:40px;
+				color:#000;
+				text-align:center;
+				position:relative;	
+			}
+			ul li:hover ul{
+				display:block;
+			}
+			a{
+				text-decoration:none;
+				color:#000;
+				width:90px;
+				display:block;
+			}
+			a:hover{
+				color:#FFF;
+				height:40px;
+				background-color:#666;
+			}
+			ul li ul li{
+				float:none;
+				background-color:#eee;
+				margin-top:2px;
+			}
+			ul li ul{
+				position:absolute;
+				top:40px;
+				display:none;
+			}
+			ul li ul li a{
+				width:90px;
+			}
+			ul li ul li a:hover{
+
+				background-color:#06F;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="menu">
+			<ul>
+				<li><a href="#">首页</a></li>
+				<li>
+					<a href="#">课程大厅</a>
+					<ul>
+						<li><a href="#">html</a></li>
+						<li><a href="#">css</a></li>
+						<li><a href="#">javascript</a></li>
+					</ul>	
+				</li>
+				<li>
+					<a href="#">学习中心</a>
+					<ul>
+						<li><a href="#">html</a></li>
+						<li><a href="#">css</a></li>
+						<li><a href="#">javascript</a></li>
+					</ul>	
+				</li>
+				<li>
+					<a href="#">经典案例</a>
+					<ul>
+						<li><a href="#">html</a></li>
+						<li><a href="#">css</a></li>
+						<li><a href="#">javascript</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">关于我们</a>
+					<ul>
+						<li><a href="#">html</a></li>
+						<li><a href="#">css</a></li>
+						<li><a href="#">javascript</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
