@@ -41,6 +41,12 @@
       #menu ul li ul li{
         position:relative;
       }
+      #menu ul li ul li ul{
+        position:absolute;
+        top:0px;
+        left:90px;
+        margin-left:1px;
+      }
       #menu ul li:hover ul{
         display:block;
       }
@@ -49,13 +55,36 @@
       }
       #menu ul li ul li:hover ul{
         display:block;
-        position:absolute;
-        top:0px;
-        left:90px;
-        margin-left:1px;
+        
       }
-     
+
     </style>
+    <script type="text/javascript">
+      window.onload=function(){
+        var isIE=!!window.ActiveXObject;
+        var isIE6=isIE&& !window.XMLHttpRequest;
+        if(isIE6){
+          var lis=document.getElementsByTagName("li");
+          for(var i=0;i<lis.length;i++){
+            lis[i].onmouseover=function(){
+              var u=this.getElementsByTagName("ul")[0];
+              if(u!=undefined){
+                u.style.display="block";
+              }
+              
+            }
+              lis[i].onmouseout=function(){
+              var u=this.getElementsByTagName("ul")[0];
+              if(u!=undefined){
+                u.style.display="none";
+              }
+              
+            }
+          }
+        
+        }
+   //   }
+    </script>
   </head>
   <body>
     <div id="menu">
