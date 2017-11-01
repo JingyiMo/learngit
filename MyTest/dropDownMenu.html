@@ -1,110 +1,56 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" Content="text/html;charset=utf-8"/>
-		<title>下拉菜单</title>
-		<style>
-            *{
-            	margin:0px;
-            	padding:0px;
-            }		
-			#menu{
-				height:40px;
-				width:450px;
-				background:#eee;
-				margin:0 auto;
-			}
-			ul{
-				list-style:none;
+  <head>
+    <meta http-equiv="Content-Type" Content="text/html;charset=utf-8"/>
+    <title>变换菜单</title>
+    <style>
+      
+      #menu{
+         margin:0 auto;
+         height:40px;  
+      }
+      #menu ul{
+        list-style:none;
+        border-bottom:8px solid #F90;
+        overflow:auto;
+      }
+      #menu ul li{
+        float:left;
+        line-height:40px;
+        list-style:none; 
+        margin-right: 1px;  
+      }
+      #menu a{
+        text-align:center;
+        text-decoration:none;
+        color:#000;
+        display:block;
+        width:90px;
+        background:#eee;
+      }
+      #menu ul li a span{
+        display:none;
+      }
+      #menu ul li a:hover span{
+        display:block;
+        background: #F90;
+        color:#FFF; 
+      }
+      #menu ul li a:hover{
+        margin-top:-40px;
 
-			}
-			li{
-				list-style:none;
-				float:left;
-				height:40px;
-				line-height:40px;
-				color:#000;
-				text-align:center;
-				position:relative;	
-			}
-			
-			a{
-				text-decoration:none;
-				color:#000;
-				width:90px;
-				display:block;
-			}
-			a:hover{
-				color:#FFF;
-				height:40px;
-				background-color:#666;
-			}
-			ul li ul li{
-				float:none;
-				background-color:#eee;
-				margin-top:2px;
-			}
-			ul li ul{
-				position:absolute;
-				top:40px;
-				display:none;
-			}
-			ul li ul li a{
-				width:90px;
-			}
-			ul li ul li a:hover{
-
-				background-color:#06F;
-			}
-		</style>
-		<script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
-		<script type="text/javascript">
-			$(document).ready(function(){
-				$(".navmenu").mouseover(function(){
-					$(this).children("ul").show();
-				});
-				$(".navmenu").mouseout(function(){
-					$(this).children("ul").hide();
-				})
-			});
-		</script>
-	</head>
-	<body>
-		<div id="menu">
-			<ul>
-				<li><a href="#">首页</a></li>
-				<li class="navmenu">
-					<a href="#">课程大厅</a>
-					<ul>
-						<li><a href="#">html</a></li>
-						<li><a href="#">css</a></li>
-						<li><a href="#">javascript</a></li>
-					</ul>	
-				</li>
-				<li class="navmenu">
-					<a href="#" >学习中心</a>
-					<ul>
-						<li><a href="#">视频学习</a></li>
-						<li><a href="#">案例学习</a></li>
-						<li><a href="#">交流平台</a></li>
-					</ul>	
-				</li>
-				<li class="navmenu">
-					<a href="#" >经典案例</a>
-					<ul >
-						<li><a href="#">案例一</a></li>
-						<li><a href="#">案例二</a></li>
-						
-					</ul>
-				</li>
-				<li class="navmenu">
-					<a href="#">关于我们</a>
-					<ul>
-						<li><a href="#">帮助</a></li>
-						<li><a href="#">关于</a></li>	
-					</ul>
-				</li>
-			</ul>
-		</div>
-	</body>
+      }
+    </style>
+  </head>
+  <body>
+    <div id="menu">
+      <ul>
+        <li><a href="http:www.imooc.com/">首页<span>Home</span></a></li>
+        <li><a href="http:www.imooc.com/">课程大厅<span>Course</span></a></li>
+        <li><a href="http:www.imooc.com/">学习中心<span>Learn</span></a></li>
+        <li><a href="http:www.imooc.com/">经典案例<span>Case</span></a></li>
+        <li><a href="http:www.imooc.com/">关于我们<span>About</span></a></li>
+      </ul>
+    </div>
+  </body>
 </html>
