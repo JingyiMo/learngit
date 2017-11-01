@@ -11,14 +11,17 @@
       }
       #menu ul{
         list-style:none;
-        border-bottom:8px solid #F90;
-        overflow:auto;
+        
       }
       #menu ul li{
         float:left;
         line-height:40px;
         list-style:none; 
         margin-right: 1px;  
+      }
+      #menu ul li a:hover{
+        background:#900;
+        color:#FFF;
       }
       #menu a{
         text-align:center;
@@ -28,28 +31,76 @@
         width:90px;
         background:#eee;
       }
-      #menu ul li a span{
+      #menu ul li ul{
+        list-style:none;
+        display:none;
+        width:90px;
+        padding:0px;
+        
+      }
+      #menu ul li ul li{
+        position:relative;
+      }
+      #menu ul li:hover ul{
+        display:block;
+      }
+      #menu ul li:hover ul li ul{
         display:none;
       }
-      #menu ul li a:hover span{
+      #menu ul li ul li:hover ul{
         display:block;
-        background: #F90;
-        color:#FFF; 
+        position:absolute;
+        top:0px;
+        left:90px;
+        margin-left:1px;
       }
-      #menu ul li a:hover{
-        margin-top:-40px;
-
-      }
+     
     </style>
   </head>
   <body>
     <div id="menu">
       <ul>
-        <li><a href="http:www.imooc.com/">首页<span>Home</span></a></li>
-        <li><a href="http:www.imooc.com/">课程大厅<span>Course</span></a></li>
-        <li><a href="http:www.imooc.com/">学习中心<span>Learn</span></a></li>
-        <li><a href="http:www.imooc.com/">经典案例<span>Case</span></a></li>
-        <li><a href="http:www.imooc.com/">关于我们<span>About</span></a></li>
+        <li><a href="http:www.imooc.com/">首页 +</a>
+         <ul>
+              <li><a href="http:www.imooc.com/">前端学习 +</a>
+                  <ul>
+                    <li><a href="http:www.imooc.com/">HTML</a></li>
+                    <li><a href="http:www.imooc.com/">CSS</a></li>
+                    <li><a href="http:www.imooc.com/">Javascrpt</a></li>
+                  </ul>
+              </li>
+              <li><a href="http:www.imooc.com/">手机平台 +</a>
+                  <ul>
+                    <li><a href="http:www.imooc.com/">ios开发</a></li>
+                    <li><a href="http:www.imooc.com/">安卓开发</a></li>
+                    <li><a href="http:www.imooc.com/">wp开发</a></li>
+                  </ul>
+              </li>
+              <li><a href="http:www.imooc.com/">后台编程</a></li>
+            </ul>
+        </li>
+        <li><a href="http:www.imooc.com/">课程大厅</a></li>
+        <li><a href="http:www.imooc.com/">学习中心 +</a>
+            <ul>
+              <li><a href="http:www.imooc.com/">前端学习 +</a>
+                  <ul>
+                    <li><a href="http:www.imooc.com/">HTML</a></li>
+                    <li><a href="http:www.imooc.com/">CSS</a></li>
+                    <li><a href="http:www.imooc.com/">Javascrpt</a></li>
+                  </ul>
+              </li>
+              <li><a href="http:www.imooc.com/">手机平台 +</a>
+                  <ul>
+                    <li><a href="http:www.imooc.com/">ios开发</a></li>
+                    <li><a href="http:www.imooc.com/">安卓开发</a></li>
+                    <li><a href="http:www.imooc.com/">wp开发</a></li>
+                  </ul>
+              </li>
+              <li><a href="http:www.imooc.com/">后台编程</a></li>
+            </ul>
+        </li>
+        <li><a href="http:www.imooc.com/">经典案例</a></li>
+        <li><a href="http:www.imooc.com/">关于我们</a></li>
       </ul>
     </div>
   </body>
