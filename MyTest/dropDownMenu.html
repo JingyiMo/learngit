@@ -57,22 +57,23 @@
 				background-color:#06F;
 			}
 		</style>
+		<script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
 		<script type="text/javascript">
-			function showMenu(li){
-				var submenu=li.getElementsByTagName("ul")[0];
-				submenu.style.display="block";
-			}
-			function hideMenu(li){
-				var submenu=li.getElementsByTagName("ul")[0];
-				submenu.style.display="none";
-			}
+			$(document).ready(function(){
+				$(".navmenu").mouseover(function(){
+					$(this).children("ul").show();
+				});
+				$(".navmenu").mouseout(function(){
+					$(this).children("ul").hide();
+				})
+			});
 		</script>
 	</head>
 	<body>
 		<div id="menu">
 			<ul>
 				<li><a href="#">首页</a></li>
-				<li onmouseover="showMenu(this)" onmouseout="hideMenu(this)" >
+				<li class="navmenu">
 					<a href="#">课程大厅</a>
 					<ul>
 						<li><a href="#">html</a></li>
@@ -80,7 +81,7 @@
 						<li><a href="#">javascript</a></li>
 					</ul>	
 				</li>
-				<li onmouseover="showMenu(this)" onmouseout="hideMenu(this)">
+				<li class="navmenu">
 					<a href="#" >学习中心</a>
 					<ul>
 						<li><a href="#">视频学习</a></li>
@@ -88,7 +89,7 @@
 						<li><a href="#">交流平台</a></li>
 					</ul>	
 				</li>
-				<li onmouseover="showMenu(this)" onmouseout="hideMenu(this)">
+				<li class="navmenu">
 					<a href="#" >经典案例</a>
 					<ul >
 						<li><a href="#">案例一</a></li>
@@ -96,7 +97,7 @@
 						
 					</ul>
 				</li>
-				<li onmouseover="showMenu(this)" onmouseout="hideMenu(this)">
+				<li class="navmenu">
 					<a href="#">关于我们</a>
 					<ul>
 						<li><a href="#">帮助</a></li>
