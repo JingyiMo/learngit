@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" Content="text/html;charset=utf-8"/>
-    <title>变换菜单</title>
+    <title>动画菜单</title>
     <style>
       
       #menu{
@@ -19,10 +19,7 @@
         list-style:none; 
         margin-right: 1px;  
       }
-      #menu ul li a:hover{
-        background:#900;
-        color:#FFF;
-      }
+     
       #menu a{
         text-align:center;
         text-decoration:none;
@@ -33,85 +30,64 @@
       }
       #menu ul li ul{
         list-style:none;
-        display:none;
-        width:90px;
+        display:none;     
         padding:0px;
-        
+        position: absolute;
       }
-      #menu ul li ul li{
-        position:relative;
-      }
-      #menu ul li ul li ul{
-        position:absolute;
-        top:0px;
-        left:90px;
-        margin-left:1px;
-      }
+     
      /* #menu ul li:hover ul{
         display:block;
-      }
-      #menu ul li:hover ul li ul{
-        display:none;
-      }
-      #menu ul li ul li:hover ul{
-        display:block;
-        
       }*/
-
-    </style>
-    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"
-"></script>
-    <script type="text/javascript">
-     $(function(){
-      if($.support.leadingWhitespace){
-        $("li").has("ul").mouseover(function(){
-          $(this).children("ul").css("display","block");
-        }).mouseout(function(){
-          $(this).children("ul").css("display","none");
-        })
+      #menu ul li a:hover{
+        background:url(image/greenAnniu.jpg) 0 0 repeat;
+        color:#FFF;
       }
-     });
+      .note{
+        color:#eee;
+        background:url(image/greenAnniu.jpg) 0 0 repeat;
+        display:block; 
+      }
+      .corner{
+        
+        height: 11px;
+        display:block;
+        background: url(image/sanjiaoxing.png) -50px 0px no-repeat;
+        
+      }
+    </style>
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+        $("#menu ul li").mousemove(function(){
+         
+          $(this).find("ul").slideDown(1000);
+        });
+        
+        $("#menu ul li").mouseleave(function(){
+          
+          $(this).find("ul").slideUp(1000);
+        });
+      });
     </script>
   </head>
   <body>
     <div id="menu">
       <ul>
-        <li><a href="http:www.imooc.com/">首页 +</a>
+        <li><a href="http:www.imooc.com/"><span class="note">首页 +</span></a>
          <ul>
-              <li><a href="http:www.imooc.com/">前端学习 +</a>
-                  <ul>
-                    <li><a href="http:www.imooc.com/">HTML</a></li>
-                    <li><a href="http:www.imooc.com/">CSS</a></li>
-                    <li><a href="http:www.imooc.com/">Javascrpt</a></li>
-                  </ul>
-              </li>
-              <li><a href="http:www.imooc.com/">手机平台 +</a>
-                  <ul>
-                    <li><a href="http:www.imooc.com/">ios开发</a></li>
-                    <li><a href="http:www.imooc.com/">安卓开发</a></li>
-                    <li><a href="http:www.imooc.com/">wp开发</a></li>
-                  </ul>
-              </li>
+              <span class="corner"></span>
+              <li><a href="http:www.imooc.com/">前端学习 +</a></li>
+              <li><a href="http:www.imooc.com/">手机平台 +</a></li>
               <li><a href="http:www.imooc.com/">后台编程</a></li>
-            </ul>
+          </ul>
         </li>
         <li><a href="http:www.imooc.com/">课程大厅</a></li>
         <li><a href="http:www.imooc.com/">学习中心 +</a>
             <ul>
-              <li><a href="http:www.imooc.com/">前端学习 +</a>
-                  <ul>
-                    <li><a href="http:www.imooc.com/">HTML</a></li>
-                    <li><a href="http:www.imooc.com/">CSS</a></li>
-                    <li><a href="http:www.imooc.com/">Javascrpt</a></li>
-                  </ul>
-              </li>
-              <li><a href="http:www.imooc.com/">手机平台 +</a>
-                  <ul>
-                    <li><a href="http:www.imooc.com/">ios开发</a></li>
-                    <li><a href="http:www.imooc.com/">安卓开发</a></li>
-                    <li><a href="http:www.imooc.com/">wp开发</a></li>
-                  </ul>
-              </li>
+              <span class="corner"></span>
+              <li><a href="http:www.imooc.com/">前端学习 +</a></li>
+              <li><a href="http:www.imooc.com/">手机平台 +</a></li>
               <li><a href="http:www.imooc.com/">后台编程</a></li>
             </ul>
         </li>
