@@ -2,97 +2,112 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" Content="text/html;charset=utf-8"/>
-    <title>动画菜单</title>
+    <title>js实现动画菜单</title>
     <style>
-      
-      #menu{
-         margin:0 auto;
-         height:40px;  
-      }
       #menu ul{
-        list-style:none;
-        
+        list-style: none;
       }
       #menu ul li{
+        list-style:none;
         float:left;
-        line-height:40px;
-        list-style:none; 
-        margin-right: 1px;  
+        height:40px;
       }
-     
-      #menu a{
-        text-align:center;
+      #menu ul li a{
         text-decoration:none;
-        color:#000;
+        color:#FFF;
         display:block;
+        background: red;
+        text-align:center;
+        line-height:40px;
         width:90px;
-        background:#eee;
       }
       #menu ul li ul{
-        list-style:none;
-        display:none;     
+        list-style: none;
+        display:none;
         padding:0px;
-        position: absolute;
+        position:absolute;
+        height:0px;
+        overflow:hidden;
       }
-     
-     /* #menu ul li:hover ul{
-        display:block;
-      }*/
       #menu ul li a:hover{
-        background:url(image/greenAnniu.jpg) 0 0 repeat;
-        color:#FFF;
-      }
-      .note{
-        color:#eee;
-        background:url(image/greenAnniu.jpg) 0 0 repeat;
-        display:block; 
-      }
-      .corner{
-        
-        height: 11px;
-        display:block;
-        background: url(image/sanjiaoxing.png) -50px 0px no-repeat;
-        
+        background: #F90;
       }
     </style>
-    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
     <script type="text/javascript">
-      $(document).ready(function(){
-
-        $("#menu ul li").mousemove(function(){
-         
-          $(this).find("ul").slideDown(1000);
-        });
+     window.onload=function(){
         
-        $("#menu ul li").mouseleave(function(){
-          
-          $(this).find("ul").slideUp(1000);
-        });
-      });
+        var ul=document.getElementById("firul");
+        var lis=ul.getElementsByTagName("li");
+        for(var i=0;i<lis.length;i++){
+          lis[i].onmouseover=function(){
+            var u=this.getElementsByTagName("ul")[0];
+            if(u!=undefined){
+               u.style.display="block";
+               addH(u.id);
+            }
+           
+          }
+          lis[i].onmouseout=function(){
+            var u=this.getElementsByTagName("ul")[0];
+            if(u!=undefined){
+
+              subH(u.id);
+
+            }
+            
+          }
+        }
+      }
+      function addH(id){
+        
+        var ulList=document.getElementById(id);
+        var h=ulList.offsetHeight;
+        h+=1;
+        if(h<=40){
+          ulList.style.height=h+"px";        
+          setTimeout("addH('"+id+"')",10);
+        }
+        else{
+          return;
+        }
+        
+     }
+      function subH(id){
+        
+        var ulList=document.getElementById(id);
+        var h=ulList.offsetHeight;
+        h-=1;
+        if(h>0){
+          ulList.style.height=h+"px";
+          setTimeout("subH('"+id+"')",10);
+        }
+        else{
+          ulList.style.display="none";
+          return;
+        }
+        
+     }
     </script>
   </head>
   <body>
     <div id="menu">
-      <ul>
-        <li><a href="http:www.imooc.com/"><span class="note">首页 +</span></a>
-         <ul>
-              <span class="corner"></span>
-              <li><a href="http:www.imooc.com/">前端学习 +</a></li>
-              <li><a href="http:www.imooc.com/">手机平台 +</a></li>
-              <li><a href="http:www.imooc.com/">后台编程</a></li>
-          </ul>
+      <ul id="firul">
+        <li><a href="http://www.imooc.com/">首页</a></li>
+        <li><a href="http://www.imooc.com/">课程中心</a>
+            <ul id="mnull">
+              <li><a href="#">html</a></li>
+              <li><a href="#">css</a></li>
+              <li><a href="#">jquery</a></li>
+            </ul> 
         </li>
-        <li><a href="http:www.imooc.com/">课程大厅</a></li>
-        <li><a href="http:www.imooc.com/">学习中心 +</a>
-            <ul>
-              <span class="corner"></span>
-              <li><a href="http:www.imooc.com/">前端学习 +</a></li>
-              <li><a href="http:www.imooc.com/">手机平台 +</a></li>
-              <li><a href="http:www.imooc.com/">后台编程</a></li>
+        <li><a href="http://www.imooc.com/">学习大厅</a></li>
+        <li><a href="http://www.imooc.com/">经典案例</a></li>
+        <li><a href="http://www.imooc.com/">关于我们</a>
+            <ul id="mull2">
+              <li><a href="#">关于</a></li>
+              <li><a href="#">帮助</a></li>
             </ul>
         </li>
-        <li><a href="http:www.imooc.com/">经典案例</a></li>
-        <li><a href="http:www.imooc.com/">关于我们</a></li>
       </ul>
     </div>
   </body>
