@@ -27,6 +27,9 @@
 			.top-nav:after{
 				clear:both;
 			}
+			.top-nav{
+				zoom:1;
+			}
 			.top-nav li{
 				float:left;
 				border-right:1px solid #222;
@@ -60,6 +63,7 @@
 				padding:0px;
 				margin:20px 0 0 0;
 				transition:all .2s ease-in-out;
+				_margin:0;
 			}
 			.top-nav li:hover > ul{
 				visibility:visible;
@@ -77,6 +81,7 @@
 				width:130px;
 				display:block;
 				float:none;
+				_height:10px;
 			}
 			.top-nav ul a:hover{
 				background-color:#0186ba;
@@ -106,6 +111,7 @@
 				left:150px;
 				margin:0 0 0 20px;
 				box-shadow:-1px 0 0 rgba(255,255,255,.3);
+				_margin:0;
 			}
 			.top-nav ul ul li:first-child a:before{
 				content:"";
@@ -124,6 +130,18 @@
 				border-bottom-color:transparent;
 			}
 		</style>
+		<script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				if($.browser.msie&& $.browser.version.substr(0,1)<7){
+					$("li").has("ul").mouseover(function(){
+						$(this).children("ul").css("visibility","visibility");
+					}).mouseout(function(){
+						$(this).children("ul").css("visibility","hidden");
+					})
+				}
+			});
+		</script>
 	</head>
 	<body>
 		<div>
