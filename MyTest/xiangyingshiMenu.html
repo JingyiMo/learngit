@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" Content="text/html;charset=utf-8"/>
+		<title>响应式菜单</title>
+		<style>
+			*{
+				margin:0px;
+				padding:0px;
+			}
+			body{
+				margin:0 auto;
+			}
+			ul{
+				margin:0;
+				padding:0;
+			}
+			a{
+				text-decoration:none;
+				color:#fff;
+				padding:0 3px;
+				display:block;
+				font-size: 14px;
+
+			}	
+			.menu li{
+				margin:3px;
+				background: gray;
+				float:left;
+				display:block;
+				width:140px;
+				color:#fff;
+				text-align:center;
+				font-size: 9px;
+
+			}	
+			#logo{
+				width:230px;
+				background: #fff;
+				
+			}
+			#logo a{
+				color:gray;
+				font-size:35px;
+				background:#fff;
+			}
+			#toplogo{
+				margin:0 auto;
+				display:none;
+				text-align: center;	
+			}
+			
+			#toplogo a{
+				color:#000;
+				font-size:35px;
+			}
+			.rmenu{
+				display:none;
+			}
+			.rmenu img{
+				width:35px;
+				height:35px;
+			}
+			@media only screen and (min-width:585px) and (max-width: 823px){
+				#logo{
+					display:none;
+				}
+				#toplogo{
+					display:block;
+					width:100%;
+				}
+				.menu{
+					width:585px;
+				}
+			}
+			@media only screen and (max-width:585px){
+				#logo{
+					display:none;
+				}
+				
+				#toplogo{
+					display:block;
+				}
+				.menu{
+					width:100%;
+				}
+				.menu li{
+					width:100%;
+					visibility:hidden;
+				}
+				.rmenu{
+					display:block;
+					text-align: right;
+				}
+			}
+		</style>
+		<script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#rMenu").on("click",function(){
+					if($("ul li").hasClass("active")){
+						$("ul li").css("visibility","hidden").removeClass("active");
+					}
+					else{
+						$("ul li").css("visibility","visible").addClass("active");
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<ul class="menu">
+			<div id="toplogo">
+				<a href="#">慕课网</a>
+				<a href="#" id="rMenu" class="rmenu"><img src="image/dropdown.png"/></a>
+			</div>
+			<li><a href="#">课程大厅</a><br/>
+			前端学习后端学习</li>
+			<li><a href="#">学习中心</a><br/>
+			好好学习天天向上</li>
+			<li id="logo"><a href="#">慕课网</a></li>
+			<li><a href="#">经典案例</a><br/>
+			经典案例分析</li>
+			<li><a href="#">关于我们</a><br/>
+			关于和帮助</li>
+		</ul>
+	</body>
+</html>
