@@ -1,214 +1,23 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="Content-Type" Content="text/html;charset=utf-8"/>
-    <title>京东版焦点轮播图</title>
-    <style>
-      *{
-        margin:0px;
-        padding:0px;
-      }
-      #container{
-        width:800px;
-        height:350px;
-        margin:30px auto;
-        overflow:hidden;
-        position:relative;
-      }
-      #list{
-        width:7200px;
-        height:350px;
-        z-index:1;
-        position:absolute;
-      }
-  
-      #list img{
-        width:800px;
-        height:350px;
-        float: left;
-      }
-      #btns{
-        position:absolute;
-        bottom:20px;
-        left:300px;
-        z-index:2;
-        background:hsla(0,0%,100%,.3);
-        border-radius:10px;
-      }
-      #btns span{
-        background:#fff;
-        width:12px;
-        height:12px;
-        z-index:2;
-        float:left;
-        margin:4px 6px;
-        border-radius:50%;
-        cursor:pointer;
-      }
-      #btns span.on{
-        background-color:red;
-      }
-      .links{
-        position:absolute;
-        top:145px;
-        z-index:2;
-        display:none;
-        width:30px;
-        height:60px;
-        line-height:60px;
-        background: #ccc;
-        color: #fff;
-        font-size: 36px;
-        text-decoration:none;
-        text-align:center;
-        cursor:pointer;
-        background-color:rgba(0,0,0,.3);
-      }
-      .links:hover{
-        background-color:rgba(0,0,0,.7);
-      }
-      #container:hover .links{
-        display:block;
-     }
-      #before{  
-        left:0px;
-      }
-      #next{
-        right:0px;
-      }
-    </style>
-    <script type="text/javascript">
-      window.onload=function(){
-        var container=document.getElementById("container");
-        var list=document.getElementById("list");
-        var btns=document.getElementById("btns").getElementsByTagName("span");
-        var before=document.getElementById("before");
-        var next=document.getElementById("next");
-        var index=1;
-        var animated=false;
-        var timer;
-
-        function showbtns(){
-          for(var i=0;i<btns.length;i++){
-            if(btns[i].className=="on"){
-              btns[i].className="";
-            }
-          }
-          btns[index-1].className="on";
-        }        
-
-        function animate(offset){
-          animated=true;
-          var time=350;  //每次位移的总时间
-          var interval=10;   //位移的间隔时间
-          var speed=offset/(time/interval);  //每次位移量
-          var newLeft=parseInt(list.style.left)+offset;
-          
-
-          function go(){
-              
-              if((speed<0&&parseInt(list.style.left)>newLeft)|| (speed>0&&parseInt(list.style.left)<newLeft)){
-                list.style.left=parseInt(list.style.left)+speed+"px";
-                setTimeout(go,interval);
-              }
-              else{
-                animated=false;
-                list.style.left=newLeft+"px";
-                if(newLeft > -800){
-                  list.style.left=-5600+"px";
-                }
-                if(newLeft < -5600){
-                  list.style.left=-800+"px";
-                }
-              }
-          }
-          go();
-        }
-
-        function autoplay(){
-          timer=setInterval(function(){
-            next.onclick();
-          },3000);
-        }
-        
-        function stop(){
-          clearInterval(timer);
-        }
-
-        next.onclick=function(){
-          index+=1;
-          if(index>btns.length){
-            index=1;
-          }
-          if(!animated){
-            animate(-800);
-            }      
-             showbtns();
-          
-
-        }
-        before.onclick=function(){
-          index-=1;
-           if(index<1){
-            index=btns.length;
-          }
-          if(!animated){
-            animate(800); 
-          }
-          
-           showbtns();
-        }
-
-        for(var i=0;i<btns.length;i++){
-          btns[i].onclick=function(){
-            if(this.className=="on"){
-              return;
-            }
-            var myindex=parseInt(this.getAttribute("index"));
-            offset=-800*(myindex-index);
-            if(!animated){
-              animate(offset); 
-            }
-              
-              index=myindex;
-              showbtns();
-           
-          }
-        }
-
-        container.onmouseover=stop;
-        container.onmouseout=autoplay;
-        autoplay();
-
-      }
-    </script>
-  </head>
-  <body>
-    <div id="container">
-      <div id="list" style="left:-800px">
-        
-          <img src="image/12.jpg"/>
-          <img src="image/6.jpg"/>
-          <img src="image/7.jpg"/>
-          <img src="image/8.jpg"/>
-          <img src="image/9.jpg"/>
-          <img src="image/10.jpg"/>
-          <img src="image/11.jpg"/>
-          <img src="image/12.jpg"/>   
-          <img src="image/6.jpg"/>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>挑战题</title>
+        <script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
+    </head>
+    <body>
+        <ul id="list"></ul>
+        <script type="text/javascript">
+        var jsonStu=[
+            {"name":"小红","scrol":"80"},
+            {"name":"小白","scrol":"90"},
+            {"name":"小欢","scrol":"70"}
+        ]
        
-      </div>
-       <div id="btns">
-          <span index=1 class="on"></span>
-          <span index=2></span>
-          <span index=3></span>
-          <span index=4></span>
-          <span index=5></span>
-          <span index=6></span>
-          <span index=7></span>
-         </div>
-        <a href="javascript:" class="links" id="before"><</a>
-        <a href="javascript:" class="links" id="next">></a>
-    </div>
-  </body>
+            $.each(jsonStu,function(index,stu){
+               $("#list").append("<li>姓名:"+stu.name+" 分数:"+stu.scrol+"</li>")
+            });
+        
+        </script>
+    </body>
 </html>
